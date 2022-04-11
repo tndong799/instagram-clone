@@ -80,7 +80,7 @@ export default function Account() {
             value={value}
             onChange={handleChange}
             aria-label="Vertical tabs example"
-            sx={{ borderRight: 1, borderColor: 'divider', flexBasis: '236px' }}
+            sx={{ borderRight: 1, borderColor: 'divider', flexBasis: '236px', display:{xs: 'none', md: 'flex'}}}
             textColor='inherit'
             TabIndicatorProps={{style: {background:'#262626',width: '1px', left: 0, right: 'none'}}}
           >

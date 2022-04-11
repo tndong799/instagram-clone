@@ -70,13 +70,13 @@ export default function PorfolioPosts() {
           TabIndicatorProps={{style: {background:'#262626', height: '1px', top: 0, bottom: 'none'}}}
           
       >
-        <Tab icon={<GridViewIcon fontSize='small' />} {...a11yProps(0)} iconPosition="start" label="Bài viết" sx={{marginRight:'60px', color: '#262626',fontSize: '12px', padding: 0, minHeight:'53px'}}/>
-        <Tab icon={<BookmarkAddedIcon fontSize='small' />} {...a11yProps(1)} iconPosition="start" label="Đã lưu" sx={{marginRight:'60px',color: '#262626',fontSize: '12px',padding: 0, minHeight:'53px'}}/>
-        <Tab icon={<AssignmentIndIcon fontSize='small' />} {...a11yProps(2)} iconPosition="start" label="Được gắn thẻ" sx={{color: '#262626',fontSize: '12px', padding: 0, minHeight:'53px'}} />
+        <Tab icon={<GridViewIcon fontSize='small' />} {...a11yProps(0)} iconPosition="start" label="Bài viết" sx={{marginRight:{ xs: '30px', md: '60px'}, color: '#262626',fontSize: '12px', padding: 0, minHeight:{ xs: '36px', md: '55px'}}}/>
+        <Tab icon={<BookmarkAddedIcon fontSize='small' />} {...a11yProps(1)} iconPosition="start" label="Đã lưu" sx={{marginRight:{ xs: '30px', md: '60px'},color: '#262626',fontSize: '12px',padding: 0, minHeight:{ xs: '36px', md: '55px'}}}/>
+        <Tab icon={<AssignmentIndIcon fontSize='small' />} {...a11yProps(2)} iconPosition="start" label="Được gắn thẻ" sx={{color: '#262626',fontSize: '12px', padding: 0, minHeight:{ xs: '36px', md: '55px'}}} />
       </Tabs>
     </Box>
     <TabPanel value={value} index={0}>
-      <ImageList sx={{ width: '100%', height: '100%', overflowY: 'unset' }} cols={3} gap={20} rowHeight={252}>
+      <ImageList sx={{ width: '100%', overflowY: 'unset',height: {sx: 100, md:252}, gap:{xs:3, md:20} }} cols={3}>
         {
           postsUser && postsUser.map((post) => (
             <ImageListItem key={post.image}>

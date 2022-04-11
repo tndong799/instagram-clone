@@ -76,7 +76,7 @@ export default function NavbarMenu() {
                         variant="h6"
                         noWrap
                         component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+                        sx={{ flexGrow: 1, display: { xs: 'none', md: 'none' } }}
                     >
                         <img src={logo} alt='Logo'></img>
                     </Typography>

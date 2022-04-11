@@ -84,11 +84,11 @@ const UpdatePostModal = forwardRef(() => {
                 type="text"
                 fullWidth
                 variant="standard"
-                sx={{width: 552}}
+                sx={{width:{xs: 250, md: 552}}}
                 onChange={handleChangeForm}
                 value={title}
             />
-            <FileUploader classes="my-2" maxSize='5' label='Tải lên hoặc thả ảnh ngay vào đây' handleChange={handleChangeImage} onSizeError={(e) => console.log(e)} name="image" types={fileTypes} />
+            <FileUploader classes="my-2 !min-w-[250px]" maxSize='5' label='Tải lên hoặc thả ảnh ngay vào đây' handleChange={handleChangeImage} onSizeError={(e) => console.log(e)} name="image" types={fileTypes} />
             { file ? <img className='w-full' src={file.preview} alt={file.name}></img> : <img className='w-full' src={previewImage} alt={title}></img>}
             </DialogContent>
             <DialogActions>

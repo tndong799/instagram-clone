@@ -60,7 +60,7 @@ export default function ChangePassword() {
   return (
     <div className='flex flex-[1_1_400px] flex-col'>
         <div className='flex flex-row justify-start mt-8'>
-            <div className='m-[2px_32px_0_124px] h-[38px] w-[38px]'>
+            <div className='md:m-[2px_32px_0_124px] h-[38px] w-[38px] xs:m-[2px_32px_0_80px]'>
                 <IconButton sx={{padding: 0}} >
                     {image 
                     ? <Avatar alt={firstname+' '+lastname} src={image} sx={{height:'38px',width:'38px'}}/> 
@@ -74,7 +74,7 @@ export default function ChangePassword() {
         <form method='POST' className='flex items-stretch flex-col my-4' onSubmit={handleSubmitForm}>
             <input type="text" onChange={handleChangeForm} name="username" value={userForm.username || ''} autoComplete="username" className='hidden'></input>
             <div className='flex flex-row justify-start mb-4'>
-                <aside className='px-8 text-right flex-[0_0_194px] text-[#262626] text-base font-semibold leading-[18px] mt-1.5'>
+                <aside className='px-8 text-right md:flex-[0_0_194px] xs:flex-[0_0_148px] xs:pl-0 text-[#262626] text-base font-semibold leading-[18px] mt-1.5'>
                     <label htmlFor='oldPassword'>Mật khẩu cũ</label>
                 </aside>
                 <div className='flex flex-row basis-[355px] pr-15 text-[#262626] text-base grow justify-start'>
@@ -84,7 +84,7 @@ export default function ChangePassword() {
                 </div>
             </div>
             <div className='flex flex-row justify-start mb-4'>
-                <aside className='px-8 text-right flex-[0_0_194px] text-[#262626] text-base font-semibold leading-[18px] mt-1.5'>
+                <aside className='px-8 text-right md:flex-[0_0_194px] xs:flex-[0_0_148px] xs:pl-0 text-[#262626] text-base font-semibold leading-[18px] mt-1.5'>
                     <label htmlFor='newPassword'>Mật khẩu mới</label>
                 </aside>
                 <div className='flex flex-row basis-[355px] pr-15 text-[#262626] text-base grow justify-start'>
@@ -94,7 +94,7 @@ export default function ChangePassword() {
                 </div>
             </div>
             <div className='flex flex-row justify-start mb-4'>
-                <aside className='px-8 text-right flex-[0_0_194px] text-[#262626] text-base font-semibold leading-[18px] mt-1.5'>
+                <aside className='px-8 text-right md:flex-[0_0_194px] xs:flex-[0_0_148px] xs:pl-0 text-[#262626] text-base font-semibold leading-[18px] mt-1.5'>
                     <label htmlFor='confirmPassword'>Xác nhận mật khẩu mới</label>
                 </aside>
                 <div className='flex flex-row basis-[355px] pr-15 text-[#262626] text-base grow justify-start'>
@@ -104,7 +104,7 @@ export default function ChangePassword() {
                 </div>
             </div>
             <div className='flex flex-row justify-start mb-4'>
-                <aside className='px-8 text-right flex-[0_0_194px] text-[#262626] text-base font-semibold leading-[18px] mt-1.5'>
+                <aside className='px-8 text-right md:flex-[0_0_194px] xs:flex-[0_0_148px] xs:pl-0 text-[#262626] text-base font-semibold leading-[18px] mt-1.5'>
                     <label></label>
                 </aside>
                 <div className='flex flex-row basis-[355px] pr-15 text-[#262626] text-base grow justify-start'>
