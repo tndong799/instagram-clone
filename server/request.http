@@ -1,0 +1,49 @@
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "ngocdong",
+    "password": "123456"
+}
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "ngocdong2",
+    "password": "123456"
+}
+
+###
+
+PUT http://localhost:5000/api/auth/624197616c523a91c362f5a1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQxOTc2MTZjNTIzYTkxYzM2MmY1YTEiLCJpYXQiOjE2NDg0ODkxNzF9.qcexyRnuxlU0JasenxAwsu2egQOWSk1JB9Lm9URbSHM
+
+{
+    "password": "1234569"
+}
+
+
+###
+
+GET http://localhost:5000/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQwMTA3ODA2YjliYjdlNDUwYWJmZTMiLCJpYXQiOjE2NDg0ODcwMzh9.fLhITAoxNmLFvOGIkluPrpc7Ztp7Sw6CT4MNuLuHADA
+
+###
+GET  http://localhost:5000/api/posts/624197616c523a91c362f5a1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQwMTA3ODA2YjliYjdlNDUwYWJmZTMiLCJpYXQiOjE2NDg0ODcwMzh9.fLhITAoxNmLFvOGIkluPrpc7Ztp7Sw6CT4MNuLuHADA
+
+###
+
+POST   http://localhost:5000/api/like
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQxOTc2MTZjNTIzYTkxYzM2MmY1YTEiLCJpYXQiOjE2NDg1NTA4NjV9.rkJeqUm1d83IkUIcu5VTpxd9T_lhlONHrh0irlGn0WM
+
+{
+    "post": "6241ee7fbd0ff7241af61a2f"
+}
