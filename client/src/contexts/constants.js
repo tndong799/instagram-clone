@@ -1,4 +1,4 @@
-export const apiUrl = process.env.NODE_ENV !== 'production' ? 'http://localhost:5000/api' : ''
+export const apiUrl = process.env.NODE_ENV !== 'production' ? 'http://localhost:5000/api' : 'https://safe-badlands-49880.herokuapp.com/api'
 export const LOCAL_STORAGE_TOKEN_NAME = 'instagram-clone'
 
 export const POSTS_LOADED_SUCCESS = 'post_loaded_success'
