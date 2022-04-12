@@ -64,7 +64,7 @@ export default function ChangePassword() {
                 <IconButton sx={{padding: 0}} >
                     {image 
                     ? <Avatar alt={firstname+' '+lastname} src={image} sx={{height:'38px',width:'38px'}}/> 
-                    : <Avatar {...stringAvatar(firstname+' '+lastname)} sx={{height:'38px',width:'38px', fontSize: 32}}/>}
+                    : <Avatar {...stringAvatar(firstname+' '+lastname)} sx={{height:'38px',width:'38px', fontSize: {xs: 20, md:32}}}/>}
                 </IconButton>
             </div>
             <div className='flex flex-[0_1_auto] flex-col'>

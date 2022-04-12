@@ -121,8 +121,10 @@ router.put('/:username', verifyToken, upload.single('image'),async (req,res) => 
         if(!oldUser) return res.status(401).json({success: false, message: 'User not exist.'})
 
         //Check password
-        const passwordValid = await argon2.verify(oldUser.password, oldPassword)
-        if(!passwordValid) return res.status(400).json({success: false, message: 'Mật khẩu cũ không đúng.'})
+        if(oldPassword){
+            const passwordValid = await argon2.verify(oldUser.password, oldPassword)
+            if(!passwordValid) return res.status(400).json({success: false, message: 'Mật khẩu cũ không đúng.'})
+        }
 
         // if(password){
         //     const hashedPassword = await argon2.hash(password)
