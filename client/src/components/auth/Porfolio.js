@@ -28,7 +28,7 @@ export default function Porfolio() {
   return (
     <div className='mb-11 flex'>
         <div className='mr-7.5 grow basis-0 '>
-            <div className='h-40 w-40   block mx-auto xs:h-[77px] xs:w-[77px]'>
+            <div className='md:h-40 md:w-40   block mx-auto xs:h-[77px] xs:w-[77px]'>
                 <div className='bg-[#fafafa] rounded-full overflow-hidden relative w-full h-full'>
                     <IconButton sx={{padding: 0}} onClick={handleShowModalUpdateAvt}>
                         {image 
