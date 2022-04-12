@@ -40,7 +40,7 @@ export default function Porfolio() {
         </div>
         <div className='text-[#262626] flex-shrink grow-[2] basis-[30px]'>
             <div className='mb-5 flex items-center shrink flex-row xs:flex-wrap'>
-                <h2 className='text-[#262626] block overflow-hidden text-ellipsis font-light md:text-[28px] leading-9 xs:text-base'>{username}</h2>
+                <h2 className='text-[#262626] block overflow-hidden text-ellipsis font-light md:text-[28px] md:leading-9 xs:text-base'>{username}</h2>
                 {
                     username === user.username 
                     && <div className='ml-5 flex flex-[0_1_auto] justify-start items-stretch xs:order-last xs:ml-0'>
