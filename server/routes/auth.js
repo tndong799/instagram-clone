@@ -5,11 +5,18 @@ const jwt = require('jsonwebtoken')
 const fs = require('fs')
 
 const upload = require('../storage/index')
+const cloudinary = require('../cloudinary')
 
 const User = require('../models/User')
 const verifyToken = require('../middlewares/auth')
 
 
+const uploader = async (path) => {
+    return await cloudinary.uploads(path,'instagram-clone')
+}
+const destroy = async (idImage) => {
+    await cloudinary.destroy(idImage)
+}
 
 // @route GET api/auth
 // @desc Check user is logged in
@@ -103,7 +110,7 @@ router.post('/login', async (req,res) => {
 })
 
 router.put('/:username', verifyToken, upload.single('image'),async (req,res) => {
-    const url = req.protocol + '://' + req.get('host')
+    let url = null
     const { password, firstname, lastname, action, oldPassword } = req.body
 
     // if(!password || !firstname || !lastname){
@@ -126,22 +133,21 @@ router.put('/:username', verifyToken, upload.single('image'),async (req,res) => 
             if(!passwordValid) return res.status(400).json({success: false, message: 'Mật khẩu cũ không đúng.'})
         }
 
-        // if(password){
-        //     const hashedPassword = await argon2.hash(password)
-        // }
+        if(req.file){
+            url = await uploader(req.file.path);
+            fs.unlinkSync(req.file.path)
+            oldUser.image && destroy(oldUser.image.id)
+        }
         
         let updateUser = {
             password: password ? await argon2.hash(password) : oldUser.password,
             firstname: firstname ? firstname : oldUser.firstname,
             lastname: lastname ? lastname : oldUser.lastname,
-            image: req.file ? url + '/uploads/' + req.file.filename : ""
+            image: url ? url : oldUser.image
         }
         
         if(!req.file){
-            updateUser.image = action ? '' : oldUser.image
-        }else{
-            const oldImage = oldUser.image.slice(oldUser.image.indexOf('/uploads') + 9)
-            oldImage && fs.unlinkSync(`./uploads/${oldImage}`)
+            updateUser.image = action ? null : oldUser.image
         }
         
         updateUser = await User.findOneAndUpdate(userUpdateCondition, updateUser, {new: true})

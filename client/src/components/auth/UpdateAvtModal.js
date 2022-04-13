@@ -91,7 +91,7 @@ export default function UpdateAvtModal() {
             <List sx={style}>
                 <ListItem sx={styleListItem}>
                     {image 
-                        ? <Avatar alt={firstname+' '+lastname} src={image} sx={{height:'60px',width:'60px'}}/> 
+                        ? <Avatar alt={firstname+' '+lastname} src={image.url} sx={{height:'60px',width:'60px'}}/> 
                         : <Avatar {...stringAvatar(firstname+' '+lastname)} sx={{height:'60px',width:'60px', fontSize: 30}}/>}
                 </ListItem>
                 <Divider></Divider>

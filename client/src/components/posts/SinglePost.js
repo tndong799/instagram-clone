@@ -45,7 +45,7 @@ export default function SinglePost({post, countLike, liked, onHandleLikePost}) {
       <CardHeader 
         avatar={<Link to={`/${post.user.username}`}>
           {post.user.image 
-            ? <Avatar alt={post.user.firstname+' '+post.user.lastname} src={post.user.image} sx={{height:32,width:32}}/> 
+            ? <Avatar alt={post.user.firstname+' '+post.user.lastname} src={post.user.image.url} sx={{height:32,width:32}}/> 
             : <Avatar {...stringAvatar(post.user.firstname+' '+post.user.lastname)} sx={{height:32,width:32, fontSize: 16}}/>}
         </Link>
         } 
@@ -93,7 +93,7 @@ export default function SinglePost({post, countLike, liked, onHandleLikePost}) {
       </Menu>
       <CardMedia
         component="img"
-        image={post.image}
+        image={post.image.url}
         alt={post.title}
       />
       <CardActions disableSpacing sx={{paddingBottom: 0}}>

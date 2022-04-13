@@ -63,7 +63,7 @@ export default function ChangePassword() {
             <div className='md:m-[2px_32px_0_124px] h-[38px] w-[38px] xs:m-[2px_32px_0_80px]'>
                 <IconButton sx={{padding: 0}} >
                     {image 
-                    ? <Avatar alt={firstname+' '+lastname} src={image} sx={{height:'38px',width:'38px'}}/> 
+                    ? <Avatar alt={firstname+' '+lastname} src={image.url} sx={{height:'38px',width:'38px'}}/> 
                     : <Avatar {...stringAvatar(firstname+' '+lastname)} sx={{height:'38px',width:'38px', fontSize: {xs: 20}}}/>}
                 </IconButton>
             </div>

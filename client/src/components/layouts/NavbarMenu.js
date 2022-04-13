@@ -94,7 +94,7 @@ export default function NavbarMenu() {
                             <Tooltip title="Trang cá nhân">
                                 <IconButton onClick={handleOpenUserMenu}>
                                     {image 
-                                    ? <Avatar alt={firstname+' '+lastname} src={image} sx={{height:24,width:24}}/> 
+                                    ? <Avatar alt={firstname+' '+lastname} src={image.url} sx={{height:24,width:24}}/> 
                                     : <Avatar {...stringAvatar(firstname+' '+lastname)} sx={{height:24,width:24, fontSize: 14}}/>}
                                 </IconButton>
                             </Tooltip>

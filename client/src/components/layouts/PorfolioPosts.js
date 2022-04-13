@@ -81,8 +81,8 @@ export default function PorfolioPosts() {
           postsUser && postsUser.map((post) => (
             <ImageListItem key={post.image}>
               <img
-                src={`${post.image}?w=252&h=252&fit=crop&auto=format`}
-                srcSet={`${post.image}?w=252&h=252&fit=crop&auto=format&dpr=2 2x`}
+                src={`${post.image.url}?w=252&h=252&fit=crop&auto=format`}
+                srcSet={`${post.image.url}?w=252&h=252&fit=crop&auto=format&dpr=2 2x`}
                 alt={post.title}
                 loading="lazy"
                 className='!h-full'

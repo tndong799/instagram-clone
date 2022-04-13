@@ -2,8 +2,10 @@ POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-    "username": "ngocdong",
-    "password": "123456"
+    "username": "ngocdong4",
+    "password": "123456",
+    "firstname": "Tran",
+    "lastname": "Dong"
 }
 
 ###
@@ -18,9 +20,9 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:5000/api/auth/624197616c523a91c362f5a1
+PUT http://localhost:5000/api/auth/62570fc96db2e86948b4d797
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQxOTc2MTZjNTIzYTkxYzM2MmY1YTEiLCJpYXQiOjE2NDg0ODkxNzF9.qcexyRnuxlU0JasenxAwsu2egQOWSk1JB9Lm9URbSHM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjU3MGZjOTZkYjJlODY5NDhiNGQ3OTciLCJpYXQiOjE2NDk4NzI4NDF9.P-WW8k_ih6mRS9JI8X1u86SfHv_7x_Z3yJvfT1Okohc
 
 {
     "password": "1234569"

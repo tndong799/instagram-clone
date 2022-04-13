@@ -20,8 +20,8 @@ const UserSchema = new Schema({
         required: true
     },
     image: {
-        type: String,
-        default: ""
+        type: Object,
+        // default: {}
     },
     createAt: {
         type: Date,

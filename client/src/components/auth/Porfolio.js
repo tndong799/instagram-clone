@@ -32,7 +32,7 @@ export default function Porfolio() {
                 <div className='bg-[#fafafa] rounded-full overflow-hidden relative w-full h-full'>
                     <IconButton sx={{padding: 0}} onClick={handleShowModalUpdateAvt}>
                         {image 
-                        ? <Avatar alt={firstname+' '+lastname} src={image} sx={{height:{ xs: '77px', md: '160px'},width:{ xs: '77px', md: '160px'}}}/> 
+                        ? <Avatar alt={firstname+' '+lastname} src={image.url} sx={{height:{ xs: '77px', md: '160px'},width:{ xs: '77px', md: '160px'}}}/> 
                         : <Avatar {...stringAvatar(firstname+' '+lastname)} sx={{height:{ xs: '77px', md: '160px'},width:{ xs: '77px', md: '160px'}, fontSize:{xs: 40, md: 80}}}/>}
                     </IconButton>
                 </div>
