@@ -126,7 +126,7 @@ router.delete('/:id', verifyToken,async (req, res) => {
         deletePost = await Post.findOneAndDelete(postDeleteCondition)
         deleteLike = await Like.deleteMany({post: req.params.id})
         if(deletePost.image){
-            destroy(deletePost.image)
+            destroy(deletePost.image.id)
         }
         return res.status(200).json({success: true, message: "Bài viết đã được xóa", post: deletePost})
     } catch (error) {
