@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const verifyToken = require('../middlewares/auth')
-const fs = require('fs')
+// const fs = require('fs')
 
 const upload = require('../storage/index')
 const cloudinary = require('../cloudinary')
@@ -59,7 +59,7 @@ router.post('/',verifyToken ,upload.single('image') ,async (req, res) => {
     if(!req.file) return res.status(400).json({success: false, message: 'Bắt buộc phải có ảnh.'})
     try {
         const url = await uploader(req.file.path);
-        fs.unlinkSync(req.file.path)
+        // fs.unlinkSync(req.file.path)
         const newPost = new Post({
             title: title || '',
             image: url ? url  : "",
@@ -91,7 +91,7 @@ router.put('/:id', verifyToken, upload.single('image'),async (req, res) => {
         let url = null;
         if(req.file){
             url = await uploader(req.file.path);
-            fs.unlinkSync(req.file.path)
+            // fs.unlinkSync(req.file.path)
             oldPost.image && destroy(oldPost.image.id)
         }
         let updatePost = {

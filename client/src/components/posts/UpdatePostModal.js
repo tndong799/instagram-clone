@@ -89,7 +89,7 @@ const UpdatePostModal = forwardRef(() => {
                 value={title}
             />
             <FileUploader classes="my-2 !min-w-[250px]" maxSize='5' label='Tải lên hoặc thả ảnh ngay vào đây' handleChange={handleChangeImage} onSizeError={(e) => console.log(e)} name="image" types={fileTypes} />
-            { file ? <img className='w-full' src={file.preview} alt={file.name}></img> : <img className='w-full' src={previewImage} alt={title}></img>}
+            { file ? <img className='w-full' src={file.preview} alt={file.name}></img> : <img className='w-full' src={previewImage.url} alt={title}></img>}
             </DialogContent>
             <DialogActions>
             <Button type='submit'>Cập nhật</Button>
