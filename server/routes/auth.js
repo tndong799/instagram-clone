@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const argon2 = require('argon2')
 const jwt = require('jsonwebtoken')
-// const fs = require('fs')
+const fs = require('fs')
 
 const upload = require('../storage/index')
 const cloudinary = require('../cloudinary')
@@ -135,7 +135,7 @@ router.put('/:username', verifyToken, upload.single('image'),async (req,res) => 
 
         if(req.file){
             url = await uploader(req.file.path);
-            // fs.unlinkSync(req.file.path)
+            fs.unlinkSync(req.file.path)
             oldUser.image && destroy(oldUser.image.id)
         }
         
