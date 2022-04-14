@@ -5,7 +5,6 @@ import { AuthContext } from '../contexts/AuthContext';
 import { Navigate } from 'react-router-dom';
 import logo from '../assets/text-logo.png';
 
-// import Avatar from '@mui/material/Avatar';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -31,9 +30,6 @@ function Auth({authRoute}) {
             alignItems: 'center',
           }}
         >
-          {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <InstagramIcon />
-          </Avatar> */}
           <img alt='logo' className='h-12' src={logo}></img>
           {authLoading ?  <div className='flex justify-center mt-6'>
                             <CircularProgress color='secondary' />

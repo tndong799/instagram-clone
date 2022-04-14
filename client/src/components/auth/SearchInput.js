@@ -5,9 +5,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import axios from 'axios';
 import { apiUrl } from '../../contexts/constants';
 import debounce from 'lodash/debounce'
-import { stringAvatar } from '../../utils/setMui';
+import AvatarUser from './AvatarUser';
 
-import Avatar from '@mui/material/Avatar';
 import { Link } from 'react-router-dom';
 
 function useOutsideAlerter(ref,cb) {
@@ -87,9 +86,13 @@ export default function SearchInput() {
                 dropdownOptions && dropdownOptions?.length !== 0 ?
                 dropdownOptions.map(value => {
                         return <Link key={value.username} onClick={handleClickCloseDropdown} className='px-4 py-2 flex flex-[0_0_auto] items-center' to={`/${value.username}`}>
-                            {value.image 
-                                    ? <Avatar alt={value.firstname+' '+value.lastname} src={value.image.url} sx={{height:44,width:44}}/> 
-                                    : <Avatar {...stringAvatar(value.firstname+' '+value.lastname)} sx={{height:44,width:44, fontSize: 24}}/>}
+                                <AvatarUser 
+                                    image={value.image} 
+                                    firstname={value.firstname} 
+                                    lastname={value.lastname} 
+                                    sizeImage={{height:44,width:44}} 
+                                    sizeImageString={{height:44,width:44, fontSize: 24}} 
+                                />    
                             <div className='ml-3 flex-[1_1_auto]'>
                                 <div className='text-sm font-semibold text-[#262626]'>{value.username}</div>
                                 <div className='text-sm font-normal text-[#8e8e8e]'>{value.firstname+' '+value.lastname}</div>

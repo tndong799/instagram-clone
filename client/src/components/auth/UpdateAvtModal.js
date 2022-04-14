@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 import { AuthContext } from '../../contexts/AuthContext'
 import { PostContext } from '../../contexts/PostContext';
+import AvatarUser from './AvatarUser';
 import { styled } from '@mui/material/styles';
-import { Avatar, Modal, Button, Divider, ListItem, List } from '@mui/material'
-import { stringAvatar } from '../../utils/setMui'
+import { Modal, Button, Divider, ListItem, List } from '@mui/material'
 
 const style = {
     position: 'absolute',
@@ -90,9 +90,13 @@ export default function UpdateAvtModal() {
         >
             <List sx={style}>
                 <ListItem sx={styleListItem}>
-                    {image 
-                        ? <Avatar alt={firstname+' '+lastname} src={image.url} sx={{height:'60px',width:'60px'}}/> 
-                        : <Avatar {...stringAvatar(firstname+' '+lastname)} sx={{height:'60px',width:'60px', fontSize: 30}}/>}
+                    <AvatarUser 
+                        image={image} 
+                        firstname={firstname} 
+                        lastname={lastname} 
+                        sizeImage={{height:'60px',width:'60px'}} 
+                        sizeImageString={{height:'60px',width:'60px', fontSize: '30px'}} 
+                    />
                 </ListItem>
                 <Divider></Divider>
                 <ListItem sx={styleListItem}>

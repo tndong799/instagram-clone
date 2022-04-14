@@ -1,13 +1,13 @@
 import {useContext,useEffect, useRef} from 'react'
 import UpdateUserModal from './UpdateUserModal'
 import { AuthContext } from '../../contexts/AuthContext'
-import { stringAvatar } from '../../utils/setMui'
 
-import { IconButton,Avatar } from '@mui/material'
+import { IconButton } from '@mui/material'
 import SettingsIcon from '@mui/icons-material/Settings';
 
 import { PostContext } from '../../contexts/PostContext';
 import { Link } from 'react-router-dom'
+import AvatarUser from './AvatarUser'
 
 
 export default function Porfolio() {
@@ -31,9 +31,13 @@ export default function Porfolio() {
             <div className='md:h-40 md:w-40   block mx-auto xs:h-[77px] xs:w-[77px]'>
                 <div className='bg-[#fafafa] rounded-full overflow-hidden relative w-full h-full'>
                     <IconButton sx={{padding: 0}} onClick={handleShowModalUpdateAvt}>
-                        {image 
-                        ? <Avatar alt={firstname+' '+lastname} src={image.url} sx={{height:{ xs: '77px', md: '160px'},width:{ xs: '77px', md: '160px'}}}/> 
-                        : <Avatar {...stringAvatar(firstname+' '+lastname)} sx={{height:{ xs: '77px', md: '160px'},width:{ xs: '77px', md: '160px'}, fontSize:{xs: 40, md: 80}}}/>}
+                        <AvatarUser 
+                        image={image} 
+                        firstname={firstname} 
+                        lastname={lastname} 
+                        sizeImage={{height:{ xs: '77px', md: '160px'},width:{ xs: '77px', md: '160px'}}} 
+                        sizeImageString={{height:{ xs: '77px', md: '160px'},width:{ xs: '77px', md: '160px'}, fontSize:{xs: 40, md: 80}}} 
+                    />
                     </IconButton>
                 </div>
             </div>

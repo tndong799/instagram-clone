@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import { PostContext } from '../../contexts/PostContext';
 import logo from '../../assets/text-logo.png'
-import { stringAvatar } from '../../utils/setMui';
 
 
 import AppBar from '@mui/material/AppBar';
@@ -13,7 +12,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
@@ -24,6 +22,7 @@ import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import HomeIcon from '@mui/icons-material/Home';
 import SearchInput from '../auth/SearchInput';
+import AvatarUser from '../auth/AvatarUser';
 
 
 
@@ -93,9 +92,7 @@ export default function NavbarMenu() {
 
                             <Tooltip title="Trang cá nhân">
                                 <IconButton onClick={handleOpenUserMenu}>
-                                    {image 
-                                    ? <Avatar alt={firstname+' '+lastname} src={image.url} sx={{height:24,width:24}}/> 
-                                    : <Avatar {...stringAvatar(firstname+' '+lastname)} sx={{height:24,width:24, fontSize: 14}}/>}
+                                    <AvatarUser image={image} firstname={firstname} lastname={lastname} sizeImage={{width: '24px', height: '24px'}} sizeImageString={{width: '24px', height: '24px', fontSize: '14px'}} />
                                 </IconButton>
                             </Tooltip>
                             <Menu

@@ -7,6 +7,7 @@ import Account from './views/Account';
 import AuthContextProvider from './contexts/AuthContext';
 import PostContextProvider from './contexts/PostContext';
 import ProtectedRoute from './components/routing/ProtectedRoute';
+import ErrorPage from './views/ErrorPage';
 
 function App() {
   return (
@@ -22,8 +23,8 @@ function App() {
               <Route path="/home" element={<Home />} />
               <Route path="/account/edit" element={<Account />} />
               <Route path="/account/password/change" element={<Account />} />
-              <Route path="/:username" element={<User />} >
-              </Route>
+              <Route path="/:username" element={<User />} />
+              <Route path="*" element={<ErrorPage />} />
             </Route>
 
             {/* No other routes match */}

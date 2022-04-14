@@ -1,8 +1,8 @@
 import {useContext, useState} from 'react'
 import { AuthContext } from '../../contexts/AuthContext'
 import { PostContext } from '../../contexts/PostContext';
-import { stringAvatar } from '../../utils/setMui';
-import { IconButton, Avatar } from '@mui/material';
+import { IconButton } from '@mui/material';
+import AvatarUser from './AvatarUser';
 
 export default function ChangePassword() {
     const {authState: {user: {image, username, firstname, lastname}}, updateUser} = useContext(AuthContext)
@@ -62,9 +62,13 @@ export default function ChangePassword() {
         <div className='flex flex-row justify-start mt-8'>
             <div className='md:m-[2px_32px_0_124px] h-[38px] w-[38px] xs:m-[2px_32px_0_80px]'>
                 <IconButton sx={{padding: 0}} >
-                    {image 
-                    ? <Avatar alt={firstname+' '+lastname} src={image.url} sx={{height:'38px',width:'38px'}}/> 
-                    : <Avatar {...stringAvatar(firstname+' '+lastname)} sx={{height:'38px',width:'38px', fontSize: {xs: 20}}}/>}
+                    <AvatarUser 
+                        image={image} 
+                        firstname={firstname} 
+                        lastname={lastname} 
+                        sizeImage={{width: '38px', height: '38px'}} 
+                        sizeImageString={{width: '38px', height: '38px', fontSize: '20px'}} 
+                    />
                 </IconButton>
             </div>
             <div className='flex flex-[0_1_auto] flex-col'>

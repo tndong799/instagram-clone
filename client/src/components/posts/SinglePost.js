@@ -1,11 +1,11 @@
 import { useContext,useState } from 'react'
-import { stringAvatar } from "../../utils/setMui";
 
 import { Link } from 'react-router-dom';
 import { PostContext } from '../../contexts/PostContext';
 import { AuthContext } from '../../contexts/AuthContext';
+import AvatarUser from '../auth/AvatarUser';
 
-import { Avatar, Card, CardHeader, IconButton, CardMedia, CardContent, Typography, CardActions,Menu, MenuItem, ListItemIcon } from "@mui/material"
+import { Card, CardHeader, IconButton, CardMedia, CardContent, Typography, CardActions,Menu, MenuItem, ListItemIcon } from "@mui/material"
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
@@ -44,9 +44,13 @@ export default function SinglePost({post, countLike, liked, onHandleLikePost}) {
     <Card className="mt-5 border border-solid border-[#dbdbdb] !shadow-none" sx={{maxWidth: 614}}>
       <CardHeader 
         avatar={<Link to={`/${post.user.username}`}>
-          {post.user.image 
-            ? <Avatar alt={post.user.firstname+' '+post.user.lastname} src={post.user.image.url} sx={{height:32,width:32}}/> 
-            : <Avatar {...stringAvatar(post.user.firstname+' '+post.user.lastname)} sx={{height:32,width:32, fontSize: 16}}/>}
+            <AvatarUser 
+                image={post.user.image} 
+                firstname={post.user.firstname} 
+                lastname={post.user.lastname} 
+                sizeImage={{width: '32px', height: '32px'}} 
+                sizeImageString={{width: '32px', height: '32px', fontSize: '16px'}} 
+            />
         </Link>
         } 
         action={<IconButton aria-label="settings" onClick={handleClick}>

@@ -76,16 +76,16 @@ export default function PorfolioPosts() {
       </Tabs>
     </Box>
     <TabPanel value={value} index={0}>
-      <ImageList sx={{ width: '100%', overflowY: 'unset',height: {sx: 100, md:252}, gap:{xs:3, md:20} }} cols={3}>
+      <ImageList sx={{ width: '100%', overflowY: 'unset',height: 'auto', gap:{xs:'3px !important', md:'20px !important'} }} cols={3}>
         {
           postsUser && postsUser.map((post) => (
-            <ImageListItem key={post.image}>
+            <ImageListItem key={post.image.id} sx={{maxHeight: {xs: '100px', md: '252px'}}}>
               <img
                 src={`${post.image.url}?w=252&h=252&fit=crop&auto=format`}
                 srcSet={`${post.image.url}?w=252&h=252&fit=crop&auto=format&dpr=2 2x`}
                 alt={post.title}
                 loading="lazy"
-                className='!h-full'
+                className='!max-h-full !h-full'
               />  
             </ImageListItem>
           ))
