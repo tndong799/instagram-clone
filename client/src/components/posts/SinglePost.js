@@ -1,4 +1,4 @@
-import { useContext,useState } from 'react'
+import {memo, useContext,useState } from 'react'
 
 import { Link } from 'react-router-dom';
 import { PostContext } from '../../contexts/PostContext';
@@ -15,7 +15,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import * as moment from 'moment';
 import 'moment/locale/vi';
 
-export default function SinglePost({post, countLike, liked, onHandleLikePost}) {
+function SinglePost({post, countLike, liked, onHandleLikePost}) {
   const {setShowUpdatePostModal, findPost, deletePost, setShowToast} = useContext(PostContext)
   const {authState} = useContext(AuthContext)
 
@@ -127,3 +127,5 @@ export default function SinglePost({post, countLike, liked, onHandleLikePost}) {
     </Card>
   )
 }
+
+export default memo(SinglePost)

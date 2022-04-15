@@ -12,7 +12,8 @@ export default function AuthContextProvider({children}) {
         isAuthenticated: false,
         user: null,
         checkRouteUser: false,
-        porfolioUser: null
+        porfolioUser: null,
+        // checkLoading: true
     })
     
     const [openModalAvt, setOpenModalAvt] = useState(false)

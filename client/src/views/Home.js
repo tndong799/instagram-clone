@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { memo, useContext, useEffect } from "react"
 import { PostContext } from "../contexts/PostContext"
 import { AuthContext } from "../contexts/AuthContext";
 
@@ -7,11 +7,11 @@ import { Container,CircularProgress,} from "@mui/material"
 
 import NoPostCard from "../components/posts/NoPostCard";
 import SinglePost from "../components/posts/SinglePost";
+import UpdatePostModal from "../components/posts/UpdatePostModal";
 
 
-
-export default function Home() {
-    const { postState: {postLoading, posts,likes}, loadedPosts, deleteLikePost, likePost } = useContext(PostContext);
+function Home() {
+    const { postState: {postLoading, posts,likes, post}, loadedPosts, deleteLikePost, likePost } = useContext(PostContext);
     const {authState} = useContext(AuthContext)
     useEffect(() => {
       const loaded = async() => {
@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <Container maxWidth='md' className="mt-5 mb-10">
       {postLoading ? <div className='flex justify-center mt-6'>
-                        <CircularProgress color='secondary' />
+                        <CircularProgress />
                       </div>
                     : posts.length === 0 ? <NoPostCard></NoPostCard>
                                         : posts.map((post, index) => {
@@ -51,6 +51,8 @@ export default function Home() {
                                           return (<SinglePost key={index} onHandleLikePost={handleLikePost} liked={liked} countLike={countLike} post={post}></SinglePost>)
                                         })
       }
+      {post !== null && <UpdatePostModal></UpdatePostModal>}
     </Container>
   )
 }
+export default memo(Home)

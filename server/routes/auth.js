@@ -148,6 +148,7 @@ router.put('/:username', verifyToken, upload.single('image'),async (req,res) => 
         
         if(!req.file){
             updateUser.image = action ? null : oldUser.image
+            oldUser.image && destroy(oldUser.image.id)
         }
         
         updateUser = await User.findOneAndUpdate(userUpdateCondition, updateUser, {new: true})

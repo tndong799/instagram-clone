@@ -8,14 +8,12 @@ import { PostContext } from '../../contexts/PostContext';
 import UpdateAvtModal from '../auth/UpdateAvtModal'
 
 import CircularProgress from '@mui/material/CircularProgress';
-import AddPostModal from '../posts/AddPostModal';
 import { IconButton, Snackbar } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import UpdatePostModal from '../posts/UpdatePostModal';
 
 export default function ProtectedRoute({navigatePath = '/login'}) {
     const {authState: {authLoading, isAuthenticated}} = useContext(AuthContext)
-    const {showToast: {show, message}, setShowToast, postState: {post}} = useContext(PostContext)
+    const {showToast: {show, message}, setShowToast} = useContext(PostContext)
     if(authLoading)
         return (
             <div className='flex justify-center mt-6 min-h-screen items-center'>
@@ -44,8 +42,6 @@ export default function ProtectedRoute({navigatePath = '/login'}) {
         <>
             <NavbarMenu></NavbarMenu>
             <Outlet />
-            <AddPostModal></AddPostModal>
-            {post !== null && <UpdatePostModal></UpdatePostModal>}
             {
                 <Snackbar
                 open={show}
@@ -56,8 +52,6 @@ export default function ProtectedRoute({navigatePath = '/login'}) {
                 />
             }
             {isAuthenticated && <UpdateAvtModal></UpdateAvtModal>}
-            
-
         </>
         )
   

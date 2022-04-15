@@ -1,7 +1,6 @@
-import { useContext,useState } from 'react';
+import { memo, useCallback, useContext,useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
-import { PostContext } from '../../contexts/PostContext';
 import logo from '../../assets/text-logo.png'
 
 
@@ -23,12 +22,14 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import HomeIcon from '@mui/icons-material/Home';
 import SearchInput from '../auth/SearchInput';
 import AvatarUser from '../auth/AvatarUser';
+import AddPostModal from '../posts/AddPostModal';
+import PasswordOutlinedIcon from '@mui/icons-material/PasswordOutlined';
 
 
 
-export default function NavbarMenu() {
+function NavbarMenu() {
     const {authState: {user}, logoutUser} = useContext(AuthContext)
-    const { setShowAddPostModal} = useContext(PostContext)
+    const [showAddPostModal,setShowAddPostModal] = useState(false)
     const { username, firstname, lastname, image } = user
     const navigate = useNavigate()
 
@@ -38,10 +39,10 @@ export default function NavbarMenu() {
     // const handleOpenNavMenu = (event) => {
     //   setAnchorElNav(event.currentTarget);
     // };
+
     const handleOpenUserMenu = (event) => {
       setAnchorElUser(event.currentTarget);
     };
-
     const goToHome = () => {
         navigate('/home')
     }
@@ -56,6 +57,9 @@ export default function NavbarMenu() {
     const handleShowModal = () => {
         setShowAddPostModal(true)
     }
+    const handleCloseModal = useCallback(() => {
+        setShowAddPostModal(false)
+    },[])
     return (
         <AppBar position="sticky" color='transparent'  className='!bg-[#ffffff] !shadow-none border-b border-[#dbdbdb] border-solid'>
             <Container maxWidth="md">
@@ -118,6 +122,15 @@ export default function NavbarMenu() {
                                     </ListItemIcon>
                                     Trang cá nhân</Link>
                                 </MenuItem>
+                                <Divider sx={{borderColor: 'transparent'}}></Divider>
+                                <MenuItem onClick={handleCloseUserMenu} sx={{fontSize: '14px'}}>
+                                    <Link to='account/password/change' className='flex'>
+                                        <ListItemIcon>
+                                            <PasswordOutlinedIcon />
+                                        </ListItemIcon>
+                                        Đổi mật khẩu
+                                    </Link>
+                                </MenuItem>
                                 <Divider></Divider>
                                 <MenuItem onClick={logoutUser} sx={{fontSize: '14px'}}>
                                     <ListItemIcon>
@@ -127,10 +140,12 @@ export default function NavbarMenu() {
                                 </MenuItem>
                             </Menu>
                         </Stack>
-                        
+                        <AddPostModal show={showAddPostModal} onCloseModal={handleCloseModal}></AddPostModal>
                     </Box>
                 </Toolbar>
             </Container>
         </AppBar>
     );
 }
+
+export default memo(NavbarMenu)

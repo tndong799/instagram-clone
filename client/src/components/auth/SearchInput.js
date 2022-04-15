@@ -1,4 +1,4 @@
-import React, { useRef, useState,useEffect, useCallback } from 'react'
+import { memo,useRef, useState,useEffect, useCallback } from 'react'
 
 import { Search, SearchIconWrapper,StyledInputBase } from '../../themes/styled';
 import SearchIcon from '@mui/icons-material/Search';
@@ -28,13 +28,13 @@ function useOutsideAlerter(ref,cb) {
     }, [ref]);
 }
 
-export default function SearchInput() {
+function SearchInput() {
     const [visible, setVisible] = useState(false)
     const [searchValue, setSearchValue] = useState('')
     const [dropdownOptions, setDropdownOptions] = useState([])
 
     const refInput = useRef(null)
-
+    
     const debounceDropDown = useCallback(debounce((nextValue) => fetchDropdownOptions(nextValue), 1000), [])
     
     const handleChangeInput = (e) => {
@@ -109,3 +109,4 @@ export default function SearchInput() {
     </Search>
   )
 }
+export default memo(SearchInput)

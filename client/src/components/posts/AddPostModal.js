@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState, forwardRef} from 'react'
+import {memo,useContext, useEffect, useState, forwardRef} from 'react'
 import { PostContext } from '../../contexts/PostContext';
 import { FileUploader } from "react-drag-drop-files";
 
@@ -12,8 +12,8 @@ import { Divider } from '@mui/material';
 
 const fileTypes = ["JPG", "PNG", "JPEG"];
 
-const AddPostModal = forwardRef(() => {
-    const {showAddPostModal, setShowAddPostModal, addNewPost,setShowToast} = useContext(PostContext)
+const AddPostModal = forwardRef(({show, onCloseModal},ref) => {
+    const {addNewPost,setShowToast} = useContext(PostContext)
 
     const [file, setFile] = useState();
     const [fileName, setFileName] = useState("");
@@ -38,7 +38,7 @@ const AddPostModal = forwardRef(() => {
         setTitle('')
         setFile(null)
         setFileName('')
-        setShowAddPostModal(false);
+        onCloseModal()
     };
     const onSubmitNewPostForm = async (e) => {
         e.preventDefault()
@@ -59,7 +59,7 @@ const AddPostModal = forwardRef(() => {
         }
     }
   return (
-    <Dialog open={showAddPostModal} onClose={handleClose}>
+    <Dialog open={show} onClose={handleClose}>
         <DialogTitle sx={{textAlign: 'center', padding:'9px 0', fontSize: 16, lineHeight: '24px'}}>Tạo bài viết mới</DialogTitle>
         <Divider></Divider>
         <form onSubmit={onSubmitNewPostForm}>
@@ -88,4 +88,4 @@ const AddPostModal = forwardRef(() => {
   )
 })
 
-export default AddPostModal
+export default memo(AddPostModal)

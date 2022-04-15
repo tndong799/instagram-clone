@@ -13,7 +13,6 @@ export default function PostContextProvider({children}){
         postsUser: [],
         likes: []
     })
-    const [showAddPostModal, setShowAddPostModal] = useState(false);
     const [showUpdatePostModal, setShowUpdatePostModal] = useState(false);
     const [showToast, setShowToast] = useState({
         show: false,
@@ -162,7 +161,7 @@ export default function PostContextProvider({children}){
         }
     }
 
-    const postContextData = {postState, loadedPosts, showAddPostModal, setShowAddPostModal, addNewPost, showToast, setShowToast, showUpdatePostModal, setShowUpdatePostModal, findPost, updatePost, deletePost, getPostsUser, likePost, deleteLikePost}
+    const postContextData = {postState, loadedPosts, addNewPost, showToast, setShowToast, showUpdatePostModal, setShowUpdatePostModal, findPost, updatePost, deletePost, getPostsUser, likePost, deleteLikePost}
     return (
         <PostContext.Provider value={postContextData}>
             {children}

@@ -14,9 +14,6 @@ export default function User() {
   const { pathname } = useLocation()
   const [loading, setLoading] = useState(true)
 
-  
-
-
   useEffect(() => {
     const checked = async (pathName) => {
       try {
