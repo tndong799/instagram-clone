@@ -19,7 +19,6 @@ import { CommentContext } from '../../contexts/CommentContext';
 
 function SinglePost({post, countLike, liked, onHandleLikePost, countComment}) {
   const {setShowUpdatePostModal, findPost, deletePost, setShowToast, setShowPostModal} = useContext(PostContext)
-  const {getCommentPost} = useContext(CommentContext)
   const {authState} = useContext(AuthContext)
 
   const handleShowUpdatePost = (id) => {
@@ -29,7 +28,7 @@ function SinglePost({post, countLike, liked, onHandleLikePost, countComment}) {
   }
   const handleShowPost = async (id) => {
     findPost(id)
-    await getCommentPost(id)
+    // await getCommentPost(id)
     setShowPostModal(true)
   }
   const [anchorEl, setAnchorEl] = useState(null);

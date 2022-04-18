@@ -18,7 +18,8 @@ export const commentReducer = (state, action) => {
         case LOADED_COMMENT_POST:
             return {
                 ...state,
-                commentOfPost
+                commentOfPost,
+                commentLoading: false
             }
         case DELETE_COMMENT:
             return {

@@ -18,13 +18,14 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 import ReportProblemOutlinedIcon from '@mui/icons-material/ReportProblemOutlined';
 import Menu from '@mui/material/Menu';
 import { MenuItem, ListItemIcon } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 import MenuSinglePost from './MenuSinglePost';
 import { Link } from 'react-router-dom';
 
 function PostModal() {
     const modalRef = useRef()
     const {postState: {post, likes},deleteLikePost, likePost, showPostModal,setShowToast, setShowPostModal, deletePost, findPost, setShowUpdatePostModal} = useContext(PostContext)
-    const {commentState: {commentOfPost}, deleteComment} = useContext(CommentContext)
+    const {commentState: {commentOfPost, commentLoading}, deleteComment, getCommentPost} = useContext(CommentContext)
     const {authState} = useContext(AuthContext)
     const [size, setSize] = useState({
         width: (window.innerHeight - 64) * 1327 / 1505,
@@ -41,6 +42,10 @@ function PostModal() {
         setAnchorEl(null);
     };
     useEffect(() => {
+        const loadCommentPost = async (id) => {
+            await getCommentPost(id)
+        }
+        loadCommentPost(post._id)
         return () => {
             handleClose()
         }
@@ -179,7 +184,9 @@ function PostModal() {
                                     </div>
                                 </div>
                             </div>
-                            { commentOfPost && commentOfPost.length > 0 
+                            {commentLoading ? <div className='flex justify-center mt-6'>
+                                <CircularProgress />
+                            </div> :  commentOfPost && commentOfPost.length > 0 
                             ? commentOfPost.map((cmt, index) => {
                                 return (
                                     <div key={index} className='group p-[14px_4px_14px_16px] flex items-start justify-start max-w-[calc(100%-48px)]'>
