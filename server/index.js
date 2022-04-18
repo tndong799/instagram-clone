@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 const authRouter = require('./routes/auth') 
 const postRouter = require('./routes/post') 
 const likeRouter = require('./routes/like') 
+const commentRouter = require('./routes/comment') 
 
 const connectDB = async () => {
     try {
@@ -40,6 +41,7 @@ app.use('/uploads',express.static('uploads'))
 app.use('/api/auth',authRouter)
 app.use('/api/posts',postRouter)
 app.use('/api/like', likeRouter)
+app.use('/api/comment', commentRouter)
 
 const PORT = process.env.PORT || 5000
 

@@ -22,11 +22,11 @@ const style = {
         justifyContent: 'center'
     }
 
-export default function UpdateUserModal() {
-    const {openModalUser, setOpenModalUser, logoutUser} = useContext(AuthContext)
+export default function UpdateUserModal({show, onClose}) {
+    const { logoutUser} = useContext(AuthContext)
     const naviagate = useNavigate()
     const handleCloseModalUpdateUser = () => {
-        setOpenModalUser(false)
+        onClose()
     }
     const handleLogoutUser = () => {
         logoutUser()
@@ -38,7 +38,7 @@ export default function UpdateUserModal() {
     }
   return (
     <Modal
-            open={openModalUser}
+            open={show}
             onClose={handleCloseModalUpdateUser}
             aria-labelledby="keep-mounted-modal-title"
             aria-describedby="keep-mounted-modal-description"

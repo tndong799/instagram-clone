@@ -30,12 +30,12 @@ const style = {
         display: 'none',
       });
 
-export default function UpdateAvtModal() {
-    const {authState: {user: {image, username, firstname, lastname}},openModalAvt,setOpenModalAvt, updateUser} = useContext(AuthContext)
+export default function UpdateAvtModal({show, onClose}) {
+    const {authState: {user: {image, username, firstname, lastname}}, updateUser} = useContext(AuthContext)
     const { setShowToast} = useContext(PostContext)
     const [loading, setLoading] = useState(false)
     const handleCloseModalUpdateAvt = () => {
-        setOpenModalAvt(false)
+        onClose()
     }
     const handleImageSelected = async (e) => {
         setLoading(true)
@@ -92,7 +92,7 @@ export default function UpdateAvtModal() {
     }
   return (
     <Modal
-            open={openModalAvt}
+            open={show}
             onClose={handleCloseModalUpdateAvt}
             aria-labelledby="keep-mounted-modal-title"
             aria-describedby="keep-mounted-modal-description"

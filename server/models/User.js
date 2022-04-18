@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const moment = require('moment')
+
 const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
@@ -25,7 +27,7 @@ const UserSchema = new Schema({
     },
     createAt: {
         type: Date,
-        default: Date.now()
+        default: moment.utc()
     }
 })
 

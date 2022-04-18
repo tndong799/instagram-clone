@@ -1,4 +1,4 @@
-import {useContext,useEffect, useRef} from 'react'
+import {useContext, useState} from 'react'
 import UpdateUserModal from './UpdateUserModal'
 import { AuthContext } from '../../contexts/AuthContext'
 
@@ -8,23 +8,35 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import { PostContext } from '../../contexts/PostContext';
 import { Link } from 'react-router-dom'
 import AvatarUser from './AvatarUser'
+import UpdateAvatarModal from './UpdateAvtModal'
 
 
 export default function Porfolio() {
-    const {authState: {porfolioUser: {image, username, firstname, lastname}, user}, setOpenModalAvt, setOpenModalUser} = useContext(AuthContext)
+    const {authState: {porfolioUser: {image, username, firstname, lastname}, user}} = useContext(AuthContext)
     const {postState: {postsUser, likes} } = useContext(PostContext)
+    const [showModalChangePassword, setShowModalChangePassword] = useState(false)
+    const [showModalUpdateAvatar, setShowModalUpdateAvatar] = useState(false)
 
     const handleShowModalUpdateAvt = () => {
         if(username === user.username){
-            setOpenModalAvt(true)
+            setShowModalUpdateAvatar(true)
         }
     }
     const handleShowModalUpdateUser = () => {
         if(username === user.username){
-            setOpenModalUser(true)
+            setShowModalChangePassword(true)
         }
     }
-    
+    const closeModalChangePassword = () => {
+        if(username === user.username){
+            setShowModalChangePassword(false)
+        }
+    }
+    const closeModalUpdateAvatar = () => {
+        if(username === user.username){
+            setShowModalUpdateAvatar(false)
+        }
+    }
   return (
     <div className='mb-11 flex'>
         <div className='mr-7.5 grow basis-0 '>
@@ -74,7 +86,8 @@ export default function Porfolio() {
             </div>
         </div>
         
-        <UpdateUserModal></UpdateUserModal>
+        <UpdateUserModal show={showModalChangePassword} onClose={closeModalChangePassword}></UpdateUserModal>
+        <UpdateAvatarModal show={showModalUpdateAvatar} onClose={closeModalUpdateAvatar}></UpdateAvatarModal>
     </div>
   )
 }

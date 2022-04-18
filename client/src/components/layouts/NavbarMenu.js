@@ -32,7 +32,6 @@ function NavbarMenu() {
     const [showAddPostModal,setShowAddPostModal] = useState(false)
     const { username, firstname, lastname, image } = user
     const navigate = useNavigate()
-
     // const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
   
@@ -46,7 +45,6 @@ function NavbarMenu() {
     const goToHome = () => {
         navigate('/home')
     }
-  
     // const handleCloseNavMenu = () => {
     //   setAnchorElNav(null);
     // };

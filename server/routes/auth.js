@@ -146,7 +146,7 @@ router.put('/:username', verifyToken, upload.single('image'),async (req,res) => 
             image: url ? url : oldUser.image
         }
         
-        if(!req.file){
+        if(!req.file && action){
             updateUser.image = action ? null : oldUser.image
             oldUser.image && destroy(oldUser.image.id)
         }

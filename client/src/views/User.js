@@ -13,7 +13,14 @@ export default function User() {
 
   const { pathname } = useLocation()
   const [loading, setLoading] = useState(true)
+  const [path, setPath] = useState(pathname.slice(pathname.indexOf('/'),pathname.lastIndexOf('/') > 0 ? pathname.lastIndexOf('/') : pathname.length))
 
+  useEffect(() => {
+    if(pathname.slice(pathname.indexOf('/'),pathname.lastIndexOf('/') > 0 ? pathname.lastIndexOf('/') : pathname.length) !== path){
+      setPath(pathname.slice(pathname.indexOf('/'),pathname.lastIndexOf('/') > 0 ? pathname.lastIndexOf('/') : pathname.length))
+    }
+  },[pathname])
+  
   useEffect(() => {
     const checked = async (pathName) => {
       try {
@@ -24,9 +31,9 @@ export default function User() {
         console.log(error)
       }
     }
-    checked(pathname.slice(1))
+    checked(path.slice(1))
     return () => setLoading(true)
-  },[pathname])
+  },[path])
   return (
     <div className='bg-[#fafafa] min-h-screen flex'>
       <Container maxWidth='md' className="mt-7 mb-10">

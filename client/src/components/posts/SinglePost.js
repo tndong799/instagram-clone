@@ -14,15 +14,23 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import * as moment from 'moment';
 import 'moment/locale/vi';
+import CommentInput from './CommentInput';
+import { CommentContext } from '../../contexts/CommentContext';
 
-function SinglePost({post, countLike, liked, onHandleLikePost}) {
-  const {setShowUpdatePostModal, findPost, deletePost, setShowToast} = useContext(PostContext)
+function SinglePost({post, countLike, liked, onHandleLikePost, countComment}) {
+  const {setShowUpdatePostModal, findPost, deletePost, setShowToast, setShowPostModal} = useContext(PostContext)
+  const {getCommentPost} = useContext(CommentContext)
   const {authState} = useContext(AuthContext)
 
   const handleShowUpdatePost = (id) => {
     findPost(id)
     setShowUpdatePostModal(true)
     handleClose()
+  }
+  const handleShowPost = async (id) => {
+    findPost(id)
+    await getCommentPost(id)
+    setShowPostModal(true)
   }
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -120,10 +128,14 @@ function SinglePost({post, countLike, liked, onHandleLikePost}) {
         <Typography variant="body2" className='!text-[#262626] !font-sm !font-semibold !text-sm !leading-[18px] !mb-2'>
           {countLike !== 0 ? `${countLike.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} lượt thích` : ''} 
         </Typography>
-        <Typography variant="body2" className='!text-[#262626] !font-normal !text-sm !leading-[18px]'>
+        <Typography variant="body2" className='!text-[#262626] !font-normal !text-sm !leading-[18px] !mb-1'>
           {post.title}
         </Typography>
+        <Typography onClick={handleShowPost.bind(this,post._id)} variant='div' component='button' sx={{display: 'block',color: '#8e8e8e', fontWeight: '400', fontSize: '14px', lineHeight: '18px', marginBottom: '4px'}}>
+          {countComment !== 0 ? `Xem tất cả ${countComment.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} bình luận` : ''}
+        </Typography>
       </CardContent>
+      <CommentInput postId={post._id} />
     </Card>
   )
 }

@@ -5,7 +5,6 @@ import { Navigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { PostContext } from '../../contexts/PostContext';
 
-import UpdateAvtModal from '../auth/UpdateAvtModal'
 
 import CircularProgress from '@mui/material/CircularProgress';
 import { IconButton, Snackbar } from '@mui/material';
@@ -51,7 +50,6 @@ export default function ProtectedRoute({navigatePath = '/login'}) {
                 action={action}
                 />
             }
-            {isAuthenticated && <UpdateAvtModal></UpdateAvtModal>}
         </>
         )
   

@@ -14,6 +14,7 @@ export default function PostContextProvider({children}){
         likes: []
     })
     const [showUpdatePostModal, setShowUpdatePostModal] = useState(false);
+    const [showPostModal, setShowPostModal] = useState(false);
     const [showToast, setShowToast] = useState({
         show: false,
         message: '',
@@ -61,7 +62,7 @@ export default function PostContextProvider({children}){
         }
     }
 
-    const findPost = (id) => {
+    const findPost = async (id) => {
         const post = postState.posts.find(post => post._id === id);
         if(post){
             dispatch({
@@ -161,7 +162,7 @@ export default function PostContextProvider({children}){
         }
     }
 
-    const postContextData = {postState, loadedPosts, addNewPost, showToast, setShowToast, showUpdatePostModal, setShowUpdatePostModal, findPost, updatePost, deletePost, getPostsUser, likePost, deleteLikePost}
+    const postContextData = {postState, loadedPosts, addNewPost, showToast, setShowToast, showUpdatePostModal, setShowUpdatePostModal, findPost, updatePost, deletePost, getPostsUser, likePost, deleteLikePost, showPostModal, setShowPostModal}
     return (
         <PostContext.Provider value={postContextData}>
             {children}

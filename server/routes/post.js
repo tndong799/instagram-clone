@@ -11,6 +11,7 @@ const cloudinary = require('../cloudinary')
 const Post = require('../models/Post')
 const User = require('../models/User')
 const Like = require('../models/Like')
+const Comment = require('../models/Comment')
 
 const uploader = async (path) => {
     return await cloudinary.uploads(path,'instagram-clone')
@@ -25,7 +26,7 @@ const destroy = async (idImage) => {
 router.get('/:username',verifyToken, async (req, res) => {
     try {
         const username = await User.findOne({username: req.params.username})
-        const posts = await Post.find({user : username._id}).populate('user', ['username','image']).sort({createAt: -1})
+        const posts = await Post.find({user : username._id}).populate('user', ['username','image', 'firstname','lastname']).sort({createAt: -1})
         res.status(200).json({success: true, message: 'Loaded posts successfuly.', posts})
     } catch (error) {
         console.log(error.message)
@@ -33,6 +34,20 @@ router.get('/:username',verifyToken, async (req, res) => {
     }
 })
 
+
+// @route GET api/posts/:id/comment
+// @desc Get comment of post
+// @access Private
+router.get('/:id/comment', verifyToken, async (req,res) => {
+    try {
+        const post = await Post.findOne({_id: req.params.id})
+        const comments = await Comment.find({post: post._id}).populate('user', ['username','image', 'firstname','lastname']).sort({createAt: -1})
+        res.status(200).json({success: true, message: 'Comment loaded successfuly.', comments})
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({success: false, message: 'Internal server error.'})
+    }
+})
 
 // @route GET api/posts
 // @desc Get post

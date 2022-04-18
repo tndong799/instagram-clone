@@ -7,6 +7,14 @@ export const ADD_POST = 'add_post'
 export const FIND_POST = 'find_post'
 export const UPDATE_POST = 'update_post'
 export const DELETE_POST = 'delete_post'
+
 export const GET_POSTS_USER = 'get_posts_user'
 export const ADD_LIKE_POST = 'add_like_post'
 export const DELETE_LIKE_POST = 'delete_like_post'
+
+export const ADD_COMMENT = 'add_comment'
+export const GET_COMMENTS = 'get_comments'
+export const LOADED_COMMENT_POST = 'loaded_comment_post'
+export const DELETE_COMMENT = 'delete_comment'
+
+

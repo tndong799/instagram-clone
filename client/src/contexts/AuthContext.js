@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer,useState } from "react";
+import { createContext, useEffect, useReducer} from "react";
 import axios from 'axios'
 import { authReducer } from "../reducers/authReducer";
 import { apiUrl, LOCAL_STORAGE_TOKEN_NAME } from "./constants";
@@ -15,9 +15,6 @@ export default function AuthContextProvider({children}) {
         porfolioUser: null,
         // checkLoading: true
     })
-    
-    const [openModalAvt, setOpenModalAvt] = useState(false)
-    const [openModalUser, setOpenModalUser] = useState(false)
 
     const loadUser = async () => {
         if(localStorage.getItem(LOCAL_STORAGE_TOKEN_NAME)){
@@ -162,7 +159,7 @@ export default function AuthContextProvider({children}) {
     }
 
     //Context data
-    const authContextData = { loginUser,registerUser, authState, logoutUser, checkUser, updateUser, openModalAvt, setOpenModalAvt, setOpenModalUser, openModalUser}
+    const authContextData = { loginUser,registerUser, authState, logoutUser, checkUser, updateUser}
 
     return (
         <AuthContext.Provider value={authContextData}>

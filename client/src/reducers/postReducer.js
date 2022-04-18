@@ -36,7 +36,8 @@ export default function postReducer(state, action){
             })
             return {
                 ...state,
-                posts: newPosts
+                posts: newPosts,
+                post
             }
         case DELETE_POST:
             return {

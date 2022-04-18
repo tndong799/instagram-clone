@@ -3,15 +3,20 @@ import { AuthContext } from '../../contexts/AuthContext'
 import { PostContext } from '../../contexts/PostContext';
 import { IconButton } from '@mui/material';
 import AvatarUser from './AvatarUser';
+import UpdateAvtModal from './UpdateAvtModal';
 
 export default function EditAccount() {
-    const {authState: {user: {image, username, firstname, lastname}}, setOpenModalAvt, updateUser} = useContext(AuthContext)
+    const {authState: {user: {image, username, firstname, lastname}}, updateUser} = useContext(AuthContext)
     const { setShowToast} = useContext(PostContext)
     const [userForm, setUserForm] = useState({ firstname, lastname})
     const [checkChangeForm, setCheckChangeForm] = useState(false)
+    const [showModalUpdateAvatar, setShowModalUpdateAvatar] = useState(false)
 
     const handleShowModalUpdateAvt = () => {
-        setOpenModalAvt(true)
+        setShowModalUpdateAvatar(true)
+    }
+    const closeModalUpdateAvatar = () => {
+        setShowModalUpdateAvatar(false)
     }
     const handleChangeForm = (e) => {
         setUserForm({...userForm,[e.currentTarget.name]: e.currentTarget.value})
@@ -101,6 +106,7 @@ export default function EditAccount() {
                     </div>
                 </div>
             </form>
+            <UpdateAvtModal show={showModalUpdateAvatar} onClose={closeModalUpdateAvatar}></UpdateAvtModal>
         </div>
     )
 }
