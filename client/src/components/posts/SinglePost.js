@@ -15,7 +15,6 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import * as moment from 'moment';
 import 'moment/locale/vi';
 import CommentInput from './CommentInput';
-import { CommentContext } from '../../contexts/CommentContext';
 
 function SinglePost({post, countLike, liked, onHandleLikePost, countComment}) {
   const {setShowUpdatePostModal, findPost, deletePost, setShowToast, setShowPostModal} = useContext(PostContext)

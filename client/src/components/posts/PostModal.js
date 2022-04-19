@@ -46,10 +46,12 @@ function PostModal() {
             await getCommentPost(id)
         }
         loadCommentPost(post._id)
+        
         return () => {
             handleClose()
         }
     },[])
+
 
 
     useEffect(() => {
@@ -76,6 +78,7 @@ function PostModal() {
     },[])
     const handleClose = () => {
         setShowPostModal(false)
+        
     }
     const handleLikePost = async (id,status) => {
         try {
@@ -105,7 +108,6 @@ function PostModal() {
         const {message, success} = await deleteComment(id)
         setShowToast({show: true, message, type: success});
     }
-
     return (
     <Dialog ref={modalRef} open={showPostModal} onClose={handleClose} maxWidth='lg'>
         <div className='flex flex-row items-stretch h-full'>

@@ -6,6 +6,8 @@ import {Tabs, Tab, Box} from '@mui/material';
 import GridViewIcon from '@mui/icons-material/GridView';
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import { CommentContext } from '../../contexts/CommentContext';
+import PostModal from '../posts/PostModal';
 
 
 
@@ -30,7 +32,8 @@ export default function PorfolioPosts() {
   const navigate = useNavigate()
 
   const {authState: {porfolioUser: {username}}} = useContext(AuthContext)
-  const {getPostsUser} = useContext(PostContext)
+  const {postState:{post}, getPostsUser, showPostModal} = useContext(PostContext)
+  const {getComments} = useContext(CommentContext)
   const [value, setValue] = useState(TabItem(username,pathname));
 
 
@@ -41,13 +44,11 @@ export default function PorfolioPosts() {
 		navigate(pathname)
 		handleChange(TabItem(username,pathname))
 	}
-
-
-
     useEffect(() => {
       const getPosts = async (username) => {
         try {
           await getPostsUser(username)
+          await getComments()
         } catch (error) {
           console.log(error)
         }
@@ -72,6 +73,8 @@ export default function PorfolioPosts() {
       </Tabs>
     </Box>
     <Outlet />
+    
+    {showPostModal && <PostModal></PostModal>}
     </>
 
   )

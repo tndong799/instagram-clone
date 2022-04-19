@@ -13,7 +13,7 @@ import PostModal from "../components/posts/PostModal";
 
 
 function Home() {
-    const { postState: {postLoading, posts,likes, post}, loadedPosts, deleteLikePost, likePost } = useContext(PostContext);
+    const { postState: {postLoading, posts,likes, post},showPostModal, loadedPosts, deleteLikePost, likePost } = useContext(PostContext);
     const {authState} = useContext(AuthContext)
     const {commentState:{comments}, getComments} = useContext(CommentContext)
     useEffect(() => {
@@ -59,7 +59,7 @@ function Home() {
                                         })
       }
       {post !== null && <UpdatePostModal></UpdatePostModal>}
-      {post !== null && <PostModal></PostModal>}
+      {showPostModal && <PostModal></PostModal>}
     </Container>
   )
 }

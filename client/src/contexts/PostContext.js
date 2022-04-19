@@ -63,7 +63,7 @@ export default function PostContextProvider({children}){
     }
 
     const findPost = async (id) => {
-        const post = postState.posts.find(post => post._id === id);
+        const post = postState.posts.find(post => post._id === id) || postState.postsUser.find(post => post._id === id);
         if(post){
             dispatch({
                 type: FIND_POST,
