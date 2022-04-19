@@ -40,7 +40,7 @@ export default function User() {
       {
         loading
         ? <div className='flex justify-center min-h-full h-[500px] items-center'>
-              <CircularProgress color='secondary' />
+              <CircularProgress  />
           </div> : !checkRouteUser ? <ErrorPage></ErrorPage>
           :  <>
               <Porfolio></Porfolio>

@@ -1,7 +1,7 @@
 import { createContext, useReducer } from "react";
 import axios from "axios";
 import { commentReducer } from "../reducers/commentReducer";
-import {apiUrl,ADD_COMMENT, GET_COMMENTS, LOADED_COMMENT_POST, DELETE_COMMENT} from './constants'
+import {apiUrl,ADD_COMMENT, GET_COMMENTS, LOADED_COMMENT_POST, DELETE_COMMENT, SET_LOADING_FALSE} from './constants'
 
 export const CommentContext = createContext()
 
@@ -46,6 +46,9 @@ export default function CommentContextProvider({children}){
     }
 
     const getCommentPost = async (id) => {
+        if(!commentState.commentLoading){
+            commentState.commentLoading = true
+        }
         try {
             const res = await axios.get(`${apiUrl}/posts/${id}/comment`)
             if(res.data.success){

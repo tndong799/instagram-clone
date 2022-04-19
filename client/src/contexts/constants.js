@@ -16,5 +16,6 @@ export const ADD_COMMENT = 'add_comment'
 export const GET_COMMENTS = 'get_comments'
 export const LOADED_COMMENT_POST = 'loaded_comment_post'
 export const DELETE_COMMENT = 'delete_comment'
+export const SET_LOADING_FALSE = 'set_loading_false'
 
 
