@@ -6,7 +6,7 @@ import ModeCommentIcon from '@mui/icons-material/ModeComment';
 import { CommentContext } from '../../contexts/CommentContext';
 
 export default function ListPost() {
-    const {postState: {post,postsUser, likes}, findPost, setShowPostModal} = useContext(PostContext)
+    const {postState: {postsUser, likes}, findPost, setShowPostModal} = useContext(PostContext)
     const {commentState:{comments}} = useContext(CommentContext)
     const handleShowModal = (id) => {
         findPost(id)
@@ -24,7 +24,7 @@ export default function ListPost() {
                     }).length
                     
                     return (
-                    <ImageListItem onClick={handleShowModal.bind(this,post._id)} className='group relative cursor-pointer' key={post.image.id} sx={{maxHeight: {xs: '100px', md: '252px'}}}>
+                    <ImageListItem onClick={handleShowModal.bind(this,post._id)} className='group relative cursor-pointer' key={post.image.id} sx={{maxHeight: {xs: '125px',sm:'195', md: '252px'}}}>
                         <img
                             src={`${post.image.url}?w=252&h=252&fit=crop&auto=format`}
                             srcSet={`${post.image.url}?w=252&h=252&fit=crop&auto=format&dpr=2 2x`}

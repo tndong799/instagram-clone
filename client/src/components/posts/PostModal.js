@@ -111,7 +111,7 @@ function PostModal() {
     return (
     <Dialog ref={modalRef} open={showPostModal} onClose={handleClose} maxWidth='lg'>
         <div className='flex flex-row items-stretch h-full'>
-            <div  style={{maxHeight: `${size.height}px`, maxWidth: `${size.width}px`, aspectRatio: '1327/1505', flexBasis: `${size.width}px`}}>
+            <div className='xs:hidden md:block'  style={{maxHeight: `${size.height}px`, maxWidth: `${size.width}px`, aspectRatio: '1327/1505', flexBasis: `${size.width}px`}}>
                 <img src={post.image.url} alt={post.title} className='w-full h-full object-cover'/>
             </div>
             <div className='w-[500px] rounded-r-sm bg-[#fff] pointer-events-auto flex flex-col flex-[1_1_auto]'>
@@ -155,6 +155,9 @@ function PostModal() {
                             }
                             
                         </Menu>
+                </div>
+                <div className='md:hidden xs:block'>
+                    <img src={post.image.url} alt={post.title} className='w-full h-full object-cover'/>
                 </div>
                 <div className='flex flex-col border-l border-solid border-[#efefef] grow'>
                     <div className='order-2 px-2 py-2 mt-1 border-t border-solid border-[#efefef]'>

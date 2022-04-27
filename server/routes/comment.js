@@ -3,6 +3,7 @@ const router = express.Router()
 const verifyToken = require('../middlewares/auth')
 
 const Comment = require('../models/Comment')
+const Post = require('../models/Post')
 
 
 router.get('/', verifyToken, async (req, res) => {
@@ -40,10 +41,14 @@ router.delete('/:id', verifyToken,async (req, res) => {
     const { id } = req.params
     if(!id) return res.status(400).json({success: false, message: "Bình luận không tồn tại"})
     try {
-        const commentDeleteCondition = {
-            _id: id,
-            user: req.userId
+        const comment = await Comment.findById(id).populate('post',['_id', 'user'])
+        let commentDeleteCondition = {}
+        if(req.userId === comment.post.user || req.userId === comment.user){
+            commentDeleteCondition = {
+                _id: id
+            }
         }
+        
         const deleteComment = await Comment.findOneAndDelete(commentDeleteCondition)
         return res.status(200).json({success: true, message: "Đã xóa bình luận.", comment: deleteComment})
     } catch (error) {

@@ -16,7 +16,7 @@ export default function ProtectedRoute({navigatePath = '/login'}) {
     if(authLoading)
         return (
             <div className='flex justify-center mt-6 min-h-screen items-center'>
-                <CircularProgress color='secondary' />
+                <CircularProgress />
             </div>
         )
     if(!isAuthenticated){
